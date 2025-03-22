@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printing Services | Off-Spec Customs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+        <h1><a href="index.html" style="color: inherit; text-decoration: none;">Off-Spec Customs</a></h1>
+        <ul>
+            <li class="dropdown">
+                <a href="store.html">Store ▾</a>
+                <ul class="dropdown-menu">
+                  <li><a href="files.html">3D Files</a></li>
+                  <li><a href="store-merch.html">Merch</a></li>
+                  <li><a href="store-featured.html">Things You Saw in Videos</a></li>
+                </ul>
+              </li>              
+          <li><a href="services.html">Printing Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <span class="theme-label" id="themeLabel">Light Mode</span>
+          <label class="switch">
+            <input type="checkbox" id="themeSwitcher">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </nav>
+      
+  </header>
+
+  <main>
+    <section class="services">
+      <h2>Recommended 3D Printing Services</h2>
+      <p>
+        I don’t offer prints myself, but these services will help you bring my designs to life with top-notch quality and fast turnaround.
+      </p>
+
+      <div class="service-card">
+        <h3><a href="https://jlcpcb.com/3d-printing" target="_blank">JLCPCB (PLC3DP)</a></h3>
+        <p>
+          I've ordered PCBs from JLCPCB and they've been absolutely top-tier every time—fast, reliable, and consistent. Their 3D printing division (PLC3DP) offers a wide range of materials, finishes, and incredible precision for serious projects.
+        </p>
+        <a href="https://jlcpcb.com/3d-printing" target="_blank" class="btn">Visit JLCPCB</a>
+      </div>
+      <div class="service-card">
+        <h3><a href="https://www.shapeways.com" target="_blank">Shapeways</a></h3>
+        <p>
+          While I haven’t used them personally (yet), <strong>Shapeways</strong> is highly reviewed for metal 3D printing and chrome-like finishes. They offer metal deposition, polishing, and plating services that are ideal for getting that OEM-quality emblem look.
+        </p>
+        <p><em>If my experience changes, I’ll update this recommendation accordingly.</em></p>
+        <a href="https://www.shapeways.com" target="_blank" class="btn">Visit Shapeways</a>
+      </div>      
+
+      <!-- Placeholder for future services -->
+      <div class="service-card">
+        <h3>More recommendations coming soon...</h3>
+        <p>I’ll be testing more services as the channel grows—stay tuned for updates!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Off-Spec Customs — Engineered... Barely.</p>
+  </footer>
+
+  <!-- Theme toggle JS (same as other pages) -->
+  <script>
+    const switcher = document.getElementById('themeSwitcher');
+    const themeLabel = document.getElementById('themeLabel');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const applyTheme = (theme) => {
+      document.body.classList.add('theme-transition');
+      setTimeout(() => {
+        if (theme === 'light') {
+          document.body.classList.add('light');
+          switcher.checked = true;
+          themeLabel.textContent = 'Dark Mode';
+        } else {
+          document.body.classList.remove('light');
+          switcher.checked = false;
+          themeLabel.textContent = 'Light Mode';
+        }
+        localStorage.setItem('theme', theme);
+        setTimeout(() => {
+          document.body.classList.remove('theme-transition');
+        }, 400);
+      }, 10);
+    };
+
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    switcher.addEventListener('change', () => {
+      const theme = switcher.checked ? 'light' : 'dark';
+      applyTheme(theme);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Off-Spec Customs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+        <h1><a href="index.html" style="color: inherit; text-decoration: none;">Off-Spec Customs</a></h1>
+        <ul>
+            <li class="dropdown">
+                <a href="store.html">Store ▾</a>
+                <ul class="dropdown-menu">
+                  <li><a href="files.html">3D Files</a></li>
+                  <li><a href="store-merch.html">Merch</a></li>
+                  <li><a href="store-featured.html">Things You Saw in Videos</a></li>
+                </ul>
+              </li>              
+          <li><a href="services.html">Printing Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <span class="theme-label" id="themeLabel">Light Mode</span>
+          <label class="switch">
+            <input type="checkbox" id="themeSwitcher">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </nav>
+      
+  </header>
+
+  <main>
+    <section class="about">
+      <h2>What is Off-Spec Customs?</h2>
+      <p>
+        Off-Spec Customs is where engineering, creativity, and pure chaos come together in a garage that's doing its best. I’m rebuilding my 1998 Acura Integra—a car that started life as a humble LS and now rocks a GSR swap. It’s part passion project, part science experiment, and entirely off-spec.
+      </p>
+
+      <h3>Who am I?</h3>
+      <p>
+        When I got this car, I had exactly <strong>zero</strong> mechanical experience. I basically learned everything from watching <em>Eric the Car Guy</em> and <em>ChrisFix</em> on YouTube (thanks, legends). Since then, I’ve picked up a ridiculous mix of skills—woodworking, welding, custom electronics, tuning, 3D printing, and just enough fabrication knowledge to be dangerous.
+      </p>
+      <p>
+        Yes, my garage is a mess. But you try doing all that and keeping it clean. 😅
+      </p>
+
+      <h3>Brains, Tangents, and Meltdowns</h3>
+      <p>
+        I’m also AuDHD (autistic + ADHD), which means I don’t always work in straight lines—mentally or physically. Expect hyperfixations, distractions, meltdowns, and moments like:<br />
+        <strong>“Wait, what was I doing again?”</strong><br />
+        or<br />
+        <strong>“I swear to god I just had this damn tool in my hand and set it down <em>right here!</em>”</strong>
+      </p>
+      <p>
+        That’s just how the process works around here. It’s chaotic, sure—but it still gets done. Eventually.
+      </p>
+
+      <h3>Why I Share</h3>
+      <p>
+        I don’t build things the “right” way. I build them the <strong>Off-Spec</strong> way. And if I can help someone else along the way—whether by sharing a file, showing how I fixed something, or just making you laugh when I forget why I started a thing—that’s a win.
+      </p>
+      <p>
+        Everything I post here is meant to be used, remixed, and improved by the community. Take what works, leave what doesn’t, and let’s build weird stuff together.
+      </p>
+
+      <div class="about-links">
+        <a href="https://www.youtube.com/@OffSpecCustoms" target="_blank" class="btn">Watch on YouTube</a>
+        <a href="files.html" class="btn">Get the Print Files</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Off-Spec Customs — Engineered... Barely.</p>
+  </footer>
+
+  <!-- Theme toggle JS -->
+  <script>
+    const switcher = document.getElementById('themeSwitcher');
+    const themeLabel = document.getElementById('themeLabel');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const applyTheme = (theme) => {
+      document.body.classList.add('theme-transition');
+      setTimeout(() => {
+        if (theme === 'light') {
+          document.body.classList.add('light');
+          switcher.checked = true;
+          themeLabel.textContent = 'Dark Mode';
+        } else {
+          document.body.classList.remove('light');
+          switcher.checked = false;
+          themeLabel.textContent = 'Light Mode';
+        }
+        localStorage.setItem('theme', theme);
+        setTimeout(() => {
+          document.body.classList.remove('theme-transition');
+        }, 400);
+      }, 10);
+    };
+
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    switcher.addEventListener('change', () => {
+      const theme = switcher.checked ? 'light' : 'dark';
+      applyTheme(theme);
+    });
+  </script>
+</body>
+</html>

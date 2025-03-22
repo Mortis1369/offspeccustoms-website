@@ -1,0 +1,730 @@
+:root {
+    --bg: #1f1f1f;
+    --bg-alt: #292929;
+    --text: #eee;
+    --text-light: #777;
+    --accent: #f15a24;
+    --accent-hover: #d14913;
+  }
+  
+  body.light {
+    --bg: #f5f5f5;
+    --bg-alt: #ffffff;
+    --text: #222;
+    --text-light: #444;
+    --accent: #f15a24;
+    --accent-hover: #b43d0e;
+  }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    transition: background 0.6s ease, color 0.6s ease;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 9999;
+  }
+  
+  body.theme-transition::before {
+    opacity: 1;
+  }
+  
+  
+  /* Navigation */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--bg-alt);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); /* ← This is the drop shadow */
+  }
+  
+  nav h1 {
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+  }
+  
+  nav ul li a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    color: var(--accent);
+  }
+  /* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-alt);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* This is the fix — keeps the menu open if hovering over either the parent or the dropdown */
+.dropdown:hover > .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+/* Toggle switch styles */
+  .theme-toggle {
+    margin-left: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    transition: 0.6s;
+    border-radius: 22px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.6;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--accent);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(18px);
+  }
+  
+  /* Hero and content */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-alt);
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .btn:hover {
+    background-color: var(--accent-hover);
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .intro,
+  .highlight {
+    margin-bottom: 2rem;
+  }
+  
+  .highlight ul {
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-alt);
+    color: var(--text-light);
+  }
+  .coming-soon {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .big-text {
+    font-size: 4rem;
+    margin: 1rem 0;
+    color: var(--accent);
+  }
+  
+  .coming-soon a {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .coming-soon a:hover {
+    text-decoration: underline;
+  }
+  .services {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .service-card {
+    background: var(--bg-alt);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .service-card h3 a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  
+  .service-card h3 a:hover {
+    text-decoration: underline;
+  }
+  .store {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .store-category {
+    margin: 3rem auto;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+  
+  .store-category h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  
+  .store-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .product-card {
+    background: var(--bg-alt);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  .featured {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .product-card {
+    background: var(--bg-alt);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  .shopify-placeholder {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-top: 2px solid var(--accent);
+    text-align: center;
+  }
+  
+  .shopify-placeholder h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  
+  .shopify-placeholder p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+  
+  #collection-component-placeholder {
+    background: var(--bg-alt);
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    font-style: italic;
+    color: var(--text);
+  }
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+    }
+  
+    nav ul li {
+      width: 100%;
+    }
+    :root {
+        --bg: #1f1f1f;
+        --bg-alt: #292929;
+        --text: #eee;
+        --text-light: #777;
+        --accent: #f15a24;
+        --accent-hover: #d14913;
+      }
+      
+      body.light {
+        --bg: #f5f5f5;
+        --bg-alt: #ffffff;
+        --text: #222;
+        --text-light: #444;
+        --accent: #f15a24;
+        --accent-hover: #b43d0e;
+      }
+      
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Segoe UI', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        transition: background 0.6s ease, color 0.6s ease;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--bg);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 9999;
+      }
+      
+      body.theme-transition::before {
+        opacity: 1;
+      }
+      
+      
+      /* Navigation */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: var(--bg-alt);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); /* ← This is the drop shadow */
+      }
+      
+      nav h1 {
+        font-size: 1.5rem;
+        color: var(--accent);
+      }
+      
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 3rem;
+      }
+      
+      nav ul li a {
+        color: var(--text);
+        text-decoration: none;
+      }
+      
+      nav ul li a:hover {
+        color: var(--accent);
+      }
+      /* Dropdown Styles */
+    .dropdown {
+        position: relative;
+      }
+      
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        background: var(--bg-alt);
+        list-style: none;
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        z-index: 1000;
+        min-width: 200px;
+      }
+      
+      .dropdown-menu li {
+        padding: 0;
+      }
+      
+      .dropdown-menu li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: var(--text);
+      }
+      
+      .dropdown-menu li a:hover {
+        background-color: var(--accent);
+        color: #fff;
+      }
+      
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      
+      
+      /* Toggle switch styles */
+      .theme-toggle {
+        margin-left: 1rem;
+      }
+      
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+      }
+      
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #999;
+        transition: 0.6s;
+        border-radius: 22px;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.6;
+        border-radius: 50%;
+      }
+      
+      input:checked + .slider {
+        background-color: var(--accent);
+      }
+      
+      input:checked + .slider:before {
+        transform: translateX(18px);
+      }
+      
+      /* Hero and content */
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background-color: var(--bg-alt);
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--accent);
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      .btn:hover {
+        background-color: var(--accent-hover);
+      }
+      
+      main {
+        padding: 2rem;
+      }
+      
+      .intro,
+      .highlight {
+        margin-bottom: 2rem;
+      }
+      
+      .highlight ul {
+        margin: 1rem 0;
+        padding-left: 1.25rem;
+      }
+      
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: var(--bg-alt);
+        color: var(--text-light);
+      }
+      .coming-soon {
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+      
+      .big-text {
+        font-size: 4rem;
+        margin: 1rem 0;
+        color: var(--accent);
+      }
+      
+      .coming-soon a {
+        color: var(--accent);
+        font-weight: bold;
+        text-decoration: none;
+      }
+      
+      .coming-soon a:hover {
+        text-decoration: underline;
+      }
+      .services {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
+      
+      .service-card {
+        background: var(--bg-alt);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+      
+      .service-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      .service-card h3 a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      
+      .service-card h3 a:hover {
+        text-decoration: underline;
+      }
+      .store {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+      }
+      
+      .store-category {
+        margin: 3rem auto;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+      
+      .store-category h3 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+      
+      .store-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+      
+      .product-card {
+        background: var(--bg-alt);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+    
+    
+    /* === Mobile Optimization === */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+      }
+    
+      nav ul li {
+        width: 100%;
+      }
+    
+      nav ul li a {
+        display: block;
+        padding: 0.5rem 1rem;
+      }
+    
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: none;
+        padding: 0;
+      }
+    
+      .dropdown-menu li a {
+        padding-left: 2rem;
+      }
+    
+      .theme-toggle {
+        margin-top: 1rem;
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .store, .about, .contact, .featured {
+        padding: 1rem;
+      }
+    
+      .product-card {
+        padding: 1rem;
+      }
+    
+      .btn {
+        width: 100%;
+      }
+    }
+    nav ul li a {
+      display: block;
+      padding: 0.5rem 1rem;
+    }
+  
+    .dropdown-menu {
+      position: static;
+      box-shadow: none;
+      background: none;
+      padding: 0;
+    }
+  
+    .dropdown-menu li a {
+      padding-left: 2rem;
+    }
+  
+    .theme-toggle {
+      margin-top: 1rem;
+    }
+  }
+    
